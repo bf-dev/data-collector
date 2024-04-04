@@ -29,4 +29,13 @@ app.post("/record/steps", async (context) => {
   return context.text("OK");
 });
 
+app.post("/record/heartrate", async (context) => {
+  const { bpm, startDate } = await context.req.json();
+  await supabase.from("health_heartrate").upsert({
+    date: startDate,
+    bpm,
+  });
+  return context.text("OK");
+});
+
 Deno.serve(app.fetch);
