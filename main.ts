@@ -38,4 +38,14 @@ app.post("/record/heartrate", async (context) => {
   return context.text("OK");
 });
 
+app.post("/record/heartrate", async (context) => {
+  const { state, startDate, endDate } = await context.req.json();
+  await supabase.from("health_sleep").upsert({
+    startDate,
+    endDate,
+    state,
+  });
+  return context.text("OK");
+});
+
 Deno.serve(app.fetch);
