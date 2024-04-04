@@ -14,7 +14,7 @@ if (!supabaseUri || !supabaseKey || !authToken) {
   );
 }
 
-app.use('/*', bearerAuth({ token: authToken }))
+app.use("/*", bearerAuth({ token: authToken }));
 
 const supabase = createClient(supabaseUri, supabaseKey);
 
