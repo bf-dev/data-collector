@@ -38,7 +38,7 @@ app.post("/record/heartrate", async (context) => {
   return context.text("OK");
 });
 
-app.post("/record/heartrate", async (context) => {
+app.post("/record/sleep", async (context) => {
   const { state, startDate, endDate } = await context.req.json();
   await supabase.from("health_sleep").upsert({
     startDate,
